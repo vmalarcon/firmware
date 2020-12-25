@@ -1,23 +1,23 @@
 # Usage:
 #
-#   echo 123456123456 | python3 rolls.py
+# python3 random_wallet.py
 #
 # - Requires python3 and nothing else!
-# - This file is <https://coldcardwallet.com/docs/rolls.py>
+# - This file is <https://coldcardwallet.com/docs/random_wallet.py>
 # - Public domain.
 #
 from hashlib import sha256
 import random, string
 
 # Read input, remove whitespace around it
-r = ''.join(random.choice('0123456') for _ in range(200))
+r = ''.join(random.choice(string.ascii_letters) for _ in range(200))
 print('Random string: %s' % r)
 
 # Calc sha256
 h = sha256(r.encode()).digest()
 
 # Show the hash
-print(h.hex())
+print('Hash: %s' % h.hex())
 print()
 
 # Sanity check for empty input
